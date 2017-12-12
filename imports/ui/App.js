@@ -11,6 +11,7 @@ class App extends Component {
             <div>
                 <h1>Choose a topic</h1>
                 <nav>
+                    <Link to="/">HOMEPAGE</Link>
                     {this.props.questions.map(questions => {
                         return <Link style={{display: 'block'}} key={questions._id} to={`/${questions.topic}`}>{questions.topic.toUpperCase()}</Link>;
                     })}
@@ -26,7 +27,7 @@ class App extends Component {
 }
 
 App = withRouter(withTracker(() => {
-    Meteor.subscribe('questions');
+    Meteor.subscribe('questions', 'onlyTopics');
 
     return {
         questions: Questions.find().fetch()

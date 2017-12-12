@@ -5,7 +5,7 @@ import { check } from 'meteor/check';
 export const Questions = new Mongo.Collection('questions');
 
 if (Meteor.isServer) {
-    Meteor.publish('questions', function publishQuestions(topicId) {
-        return Questions.find();
+    Meteor.publish('questions', function publishQuestions(onlyTopics = false, topicId) {
+        return onlyTopics ? Questions.find({}, {fields: {"topic": 1}}) : Questions.find();
     });
 }
