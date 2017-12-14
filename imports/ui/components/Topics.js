@@ -7,7 +7,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { Questions } from "../../api/Questions";
 // **************************************************
 
-let topicsSubscription;
 
 class Topics extends Component {
     showAvailableTopics = () => {
@@ -23,10 +22,6 @@ class Topics extends Component {
         })
     };
 
-    componentWillUnmount() {
-        topicsSubscription.stop();
-    }
-
     render() {
         return (
             <div>
@@ -40,7 +35,7 @@ class Topics extends Component {
 }
 
 Topics = withRouter(withTracker(() => {
-    topicsSubscription = Meteor.subscribe('questions', 'onlyTopics');
+    Meteor.subscribe('questions', 'onlyTopics');
 
     return {
         questions: Questions.find().fetch()
