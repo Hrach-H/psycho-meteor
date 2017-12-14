@@ -10,13 +10,13 @@ import { Questions } from "../../api/Questions";
 
 class Topics extends Component {
     showAvailableTopics = () => {
-        return this.props.questions.map(questions => {
+        return this.props.topics.map(topic => {
             return <Link
-                to={`/${questions.topic}`}
+                to={`/${topic.topic}`}
                 style={{display: 'block'}}
-                key={questions._id}>
+                key={topic._id}>
 
-                {questions.topic.toUpperCase()}
+                {topic.topic.toUpperCase()}
 
                 </Link>;
         })
@@ -35,10 +35,10 @@ class Topics extends Component {
 }
 
 Topics = withRouter(withTracker(() => {
-    Meteor.subscribe('questions', 'onlyTopics');
+    Meteor.subscribe('topics');
 
     return {
-        questions: Questions.find().fetch()
+        topics: Questions.find().fetch()
     };
 })(Topics));
 
