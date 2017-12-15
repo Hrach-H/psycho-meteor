@@ -1,4 +1,4 @@
-export const chooseTopic = (topic) => ({
-    type: "TOPIC",
-    payload: topic
+export const storeQuestions = (questions) => ({
+    type: "STORE_QUESTIONS",
+    payload: questions
 });

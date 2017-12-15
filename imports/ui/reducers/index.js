@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import topicsReducer from './topics';
+import questionsReducer from './questions';
 // **************************************************
 
 export const allReducers = combineReducers({
-    topicsReducer
+    questionsReducer
 });

@@ -12,7 +12,7 @@ import { allReducers } from "../imports/ui/reducers";
 import App from '../imports/ui/App';
 // **************************************************
 
-const store = createStore(allReducers);
+export const store = createStore(allReducers);
 
 Meteor.startup(() => {
     render(

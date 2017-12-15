@@ -1,7 +1,7 @@
 export default function(state={}, action) {
     switch (action.type) {
-        case 'TOPIC':
-            return Object.assign({}, { topic: action.payload });
+        case 'STORE_QUESTIONS':
+            return Object.assign({}, action.payload.map(question => question));
         default:
             return state;
     }
