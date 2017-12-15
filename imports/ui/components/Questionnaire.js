@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-
+// Redux
 import { connect } from 'react-redux';
 
 // **************************************************
 
 class Questionnaire extends Component {
-    getQuestions() {
+    renderQuestions() {
         const questions = this.props.questions;
         if (Object.keys(questions).length) {
             return Object.keys(questions).map((question, i) => {
                 return (
-                    <div key={i}>
+                    <li key={i} style={{listStyle: "none"}}>
                         <h2>
                             {questions[question].text}
                         </h2>
@@ -23,7 +23,7 @@ class Questionnaire extends Component {
                                 );
                             })}
                         </select>
-                    </div>
+                    </li>
                 );
             })
         }
@@ -32,9 +32,9 @@ class Questionnaire extends Component {
     render() {
         console.log(this.props.questions);
         return (
-            <div>
-                {this.getQuestions()}
-            </div>
+            <ul>
+                {this.renderQuestions()}
+            </ul>
         );
     }
 }
